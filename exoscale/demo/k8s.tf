@@ -1,6 +1,6 @@
 resource "exoscale_sks_cluster" "c2c" {
   zone = var.default_zone
-  name = "${var.environnement}-cluster"
+  name = "${var.environment}-cluster"
 }
 
 output "my_sks_cluster_endpoint" {
