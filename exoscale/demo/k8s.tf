@@ -11,6 +11,7 @@ resource "exoscale_security_group" "k8s" {
 resource "exoscale_security_group_rule" "nodeport_services" {
   security_group_id = exoscale_security_group.k8s.id
   description       = "NodePort services"
+  type              = "INGRESS"
   protocol          = "TCP"
   cidr              = "0.0.0.0/0"
   start_port        = 30000
@@ -20,6 +21,7 @@ resource "exoscale_security_group_rule" "nodeport_services" {
 resource "exoscale_security_group_rule" "kubelet" {
   security_group_id = exoscale_security_group.k8s.id
   description       = "SKS kubelet"
+  type              = "INGRESS"
   protocol          = "TCP"
   start_port        = 10250
   end_port          = 10250
@@ -28,6 +30,7 @@ resource "exoscale_security_group_rule" "kubelet" {
 resource "exoscale_security_group_rule" "calico_traffic" {
   security_group_id = exoscale_security_group.k8s.id
   description       = "Calico traffic"
+  type              = "INGRESS"
   protocol          = "UDP"
   start_port        = 4789
   end_port          = 4789
