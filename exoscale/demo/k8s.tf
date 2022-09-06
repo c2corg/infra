@@ -4,6 +4,15 @@ resource "exoscale_sks_cluster" "c2c" {
   service_level = "starter"
 }
 
+resource "exoscale_sks_nodepool" "default" {
+  cluster_id = exoscale_sks_cluster.c2c.id
+  zone       = exoscale_sks_cluster.c2c.zone
+  name       = "${var.environment}-nodepool"
+
+  instance_type = "standard.medium"
+  size          = 0
+}
+
 resource "exoscale_security_group" "k8s" {
   name = "${var.environment}-cluster-security-group"
 }
