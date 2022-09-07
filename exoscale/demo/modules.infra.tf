@@ -1,3 +1,3 @@
-module "haproxy" {
-  source = "../../modules/haproxy-ingress"
-}
+# module "haproxy" {
+#   source = "../../modules/haproxy-ingress"
+# }
