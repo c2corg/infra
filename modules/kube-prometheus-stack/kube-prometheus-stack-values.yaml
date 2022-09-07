@@ -1,0 +1,12 @@
+---
+kubeEtcd:
+  enabled: false # etcd port is not open
+kubeProxy:
+  enabled: false # kube-proxy port is not open
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false # Watch all ServiceMonitors in cluster within namespace, allowing to discover additional serviceMonitor below
+    podMonitorSelectorNilUsesHelmValues: false # Watch all PodMonitors in cluster
+    ruleSelector:
+      matchLabels:
+        prometheus: kube-prometheus # A selector to select which PrometheusRules to use. If {}, select all PrometheusRules
