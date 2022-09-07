@@ -7,7 +7,7 @@ resource "helm_release" "haproxy_ingress" {
   name        = "haproxy-ingress"
   chart       = "haproxy-ingress"
   repository  = data.helm_repository.haproxy_ingress.metadata[0].url
-  namespace   = "default"
+  namespace   = var.namespace
   max_history = 10
   version     = var.chart_version
 
@@ -19,14 +19,17 @@ resource "helm_release" "haproxy_ingress" {
     name  = "controller.replicaCount"
     value = var.replica_count
   }
+
   set {
     name  = "controller.metrics.serviceMonitor.enabled"
     value = var.enable_metrics
   }
+
   set {
     name  = "controller.metrics.enabled"
     value = var.enable_metrics
   }
+
   set {
     name  = "controller.stats.enabled"
     value = var.enable_metrics

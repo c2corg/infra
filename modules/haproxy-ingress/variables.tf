@@ -18,3 +18,8 @@ variable "enable_metrics" {
   type    = bool
   default = true
 }
+
+variable "namespace" {
+  type    = string
+  defautl = "haproxy-ingress"
+}

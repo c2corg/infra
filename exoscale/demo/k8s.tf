@@ -4,14 +4,21 @@ resource "exoscale_sks_cluster" "c2c" {
   service_level = "starter"
 }
 
-# resource "exoscale_sks_nodepool" "default" {
+resource "exoscale_sks_nodepool" "pool1" {
+  cluster_id         = exoscale_sks_cluster.c2c.id
+  zone               = exoscale_sks_cluster.c2c.zone
+  name               = "${var.environment}-nodepool1"
+  security_group_ids = [exoscale_security_group.k8s.id]
+  instance_type      = "standard.tiny"
+  size               = 1
+}
+# resource "exoscale_sks_nodepool" "pool2" {
 #   cluster_id = exoscale_sks_cluster.c2c.id
 #   zone       = exoscale_sks_cluster.c2c.zone
-#   name       = "${var.environment}-nodepool"
+#   name       = "${var.environment}-nodepool2"
 #   security_group_ids = [exoscale_security_group.k8s.id]
-
-#   instance_type = "standard.medium"
-#   size          = 0
+#   instance_type = "standard.tiny"
+#   size          = 1
 # }
 
 resource "exoscale_security_group" "k8s" {

@@ -39,3 +39,8 @@ variable "grafana_pvc_name" {
 variable "chart_version" {
   default = "11.1.1"
 }
+
+variable "namespace" {
+  type    = string
+  defautl = "kube-prometheus-stack"
+}

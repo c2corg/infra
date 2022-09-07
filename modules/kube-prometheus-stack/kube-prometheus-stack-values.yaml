@@ -5,8 +5,19 @@ kubeProxy:
   enabled: false # kube-proxy port is not open
 prometheus:
   prometheusSpec:
-    serviceMonitorSelectorNilUsesHelmValues: false # Watch all ServiceMonitors in cluster within namespace, allowing to discover additional serviceMonitor below
-    podMonitorSelectorNilUsesHelmValues: false # Watch all PodMonitors in cluster
-    ruleSelector:
-      matchLabels:
-        prometheus: kube-prometheus # A selector to select which PrometheusRules to use. If {}, select all PrometheusRules
+    # By default, Prometheus discovers PodMonitors and ServiceMonitors within its namespace,
+    # that are labeled with the same release tag as the prometheus-operator release
+    # Allow rules, serviceMonitors and podMonitors to be automaticaly discovered in any namespace
+    # without filtering on labels
+    podMonitorNamespaceSelector:
+      any: true
+    podMonitorSelector: {}
+    podMonitorSelectorNilUsesHelmValues: false
+    ruleNamespaceSelector:
+      any: true
+    ruleSelector: {}
+    ruleSelectorNilUsesHelmValues: false
+    serviceMonitorNamespaceSelector:
+      any: true
+    serviceMonitorSelector: {}
+    serviceMonitorSelectorNilUsesHelmValues: false
