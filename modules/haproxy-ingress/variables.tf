@@ -6,7 +6,7 @@ variable "loadBalancerAnnotations" {
 
 variable "chart_version" {
   type    = string
-  default = "0.13.19"
+  default = "0.13.9"
 }
 
 variable "replica_count" {
@@ -21,5 +21,5 @@ variable "enable_metrics" {
 
 variable "namespace" {
   type    = string
-  defautl = "haproxy-ingress"
+  default = "haproxy-ingress"
 }

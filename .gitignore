@@ -1,0 +1,4 @@
+.terraform/
+*secrets*
+.idea
+.terraform.lock.hcl

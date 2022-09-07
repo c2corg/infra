@@ -42,5 +42,5 @@ variable "chart_version" {
 
 variable "namespace" {
   type    = string
-  defautl = "kube-prometheus-stack"
+  default = "kube-prometheus-stack"
 }

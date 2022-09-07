@@ -1,17 +1,14 @@
-data "helm_repository" "prometheus_community" {
-  name = "prometheus-community"
-  url  = "https://prometheus-community.github.io/helm-charts"
-}
-
 # The kube-prometheus-stack provides Kubernetes native deployment and management of Prometheus
 # and related monitoring components (grafana, alert manager, ...)
 resource "helm_release" "kube_prometheus_stack" {
-  name        = "kube-prometheus-stack"
-  chart       = "kube-prometheus-stack"
-  repository  = data.helm_repository.prometheus_community.metadata[0].url
-  namespace   = var.namespace
-  version     = var.chart_version
-  max_history = 10
+  name             = "kube-prometheus-stack"
+  chart            = "kube-prometheus-stack"
+  repository       = "https://prometheus-community.github.io/helm-charts"
+  namespace        = var.namespace
+  create_namespace = true
+  skip_crds        = false
+  version          = var.chart_version
+  max_history      = 10
 
   values = [
     file("${path.module}/kube-prometheus-stack-values.yaml")

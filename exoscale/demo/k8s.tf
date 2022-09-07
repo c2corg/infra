@@ -4,21 +4,30 @@ resource "exoscale_sks_cluster" "c2c" {
   service_level = "starter"
 }
 
-# resource "exoscale_sks_nodepool" "pool1" {
+resource "exoscale_sks_kubeconfig" "c2c" {
+  cluster_id = exoscale_sks_cluster.c2c.id
+  zone       = exoscale_sks_cluster.c2c.zone
+  user       = "kubernetes-admin"
+  groups     = ["system:masters"]
+}
+
+resource "exoscale_sks_nodepool" "pool1" {
+  cluster_id         = exoscale_sks_cluster.c2c.id
+  zone               = exoscale_sks_cluster.c2c.zone
+  name               = "${var.environment}-nodepool1"
+  instance_prefix    = "${var.environment}-nodepool1"
+  security_group_ids = [exoscale_security_group.k8s.id]
+  instance_type      = "standard.small"
+  size               = 1
+}
+# resource "exoscale_sks_nodepool" "pool2" {
 #   cluster_id         = exoscale_sks_cluster.c2c.id
 #   zone               = exoscale_sks_cluster.c2c.zone
-#   name               = "${var.environment}-nodepool1"
+#   name               = "${var.environment}-nodepool2"
+#   instance_prefix    = "${var.environment}-nodepool2"
 #   security_group_ids = [exoscale_security_group.k8s.id]
 #   instance_type      = "standard.small"
 #   size               = 1
-# }
-# resource "exoscale_sks_nodepool" "pool2" {
-#   cluster_id = exoscale_sks_cluster.c2c.id
-#   zone       = exoscale_sks_cluster.c2c.zone
-#   name       = "${var.environment}-nodepool2"
-#   security_group_ids = [exoscale_security_group.k8s.id]
-#   instance_type = "standard.small"
-#   size          = 1
 # }
 
 resource "exoscale_security_group" "k8s" {

@@ -15,5 +15,5 @@ variable "metrics_namespace" {
 
 variable "namespace" {
   type    = string
-  defautl = "cert-manager"
+  default = "cert-manager"
 }

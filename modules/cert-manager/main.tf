@@ -1,13 +1,8 @@
-data "helm_repository" "jetstack" {
-  name = "jetstack"
-  url  = "https://charts.jetstack.io"
-}
-
 # Cert manager
 resource "helm_release" "cert-manager" {
   name             = "cert-manager"
   chart            = "cert-manager"
-  repository       = data.helm_repository.jetstack.metadata[0].url
+  repository       = "https://charts.jetstack.io"
   namespace        = var.namespace
   create_namespace = true
   skip_crds        = false
@@ -34,6 +29,6 @@ resource "helm_release" "cert-manager" {
 resource "helm_release" "cert-issuer" {
   name        = "cert-issuer"
   chart       = "${path.module}/chart"
-  namespace   = local.namespace
+  namespace   = var.namespace
   max_history = 10
 }

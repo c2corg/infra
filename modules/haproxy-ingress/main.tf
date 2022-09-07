@@ -1,15 +1,12 @@
-data "helm_repository" "haproxy_ingress" {
-  name = "haproxy-ingress"
-  url  = "https://haproxy-ingress.github.io/charts"
-}
-
 resource "helm_release" "haproxy_ingress" {
-  name        = "haproxy-ingress"
-  chart       = "haproxy-ingress"
-  repository  = data.helm_repository.haproxy_ingress.metadata[0].url
-  namespace   = var.namespace
-  max_history = 10
-  version     = var.chart_version
+  name             = "haproxy-ingress"
+  chart            = "haproxy-ingress"
+  repository       = "https://haproxy-ingress.github.io/charts"
+  namespace        = var.namespace
+  create_namespace = true
+  skip_crds        = false
+  max_history      = 10
+  version          = var.chart_version
 
   values = [
     file("${path.module}/haproxy-ingress-values.yaml")
