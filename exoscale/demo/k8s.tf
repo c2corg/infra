@@ -9,7 +9,7 @@ resource "exoscale_sks_nodepool" "pool1" {
   zone               = exoscale_sks_cluster.c2c.zone
   name               = "${var.environment}-nodepool1"
   security_group_ids = [exoscale_security_group.k8s.id]
-  instance_type      = "standard.tiny"
+  instance_type      = "standard.small"
   size               = 1
 }
 # resource "exoscale_sks_nodepool" "pool2" {
@@ -17,7 +17,7 @@ resource "exoscale_sks_nodepool" "pool1" {
 #   zone       = exoscale_sks_cluster.c2c.zone
 #   name       = "${var.environment}-nodepool2"
 #   security_group_ids = [exoscale_security_group.k8s.id]
-#   instance_type = "standard.tiny"
+#   instance_type = "standard.small"
 #   size          = 1
 # }
 
