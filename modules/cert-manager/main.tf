@@ -31,4 +31,12 @@ resource "helm_release" "cert-issuer" {
   chart       = "${path.module}/chart"
   namespace   = var.namespace
   max_history = 10
+  values = [
+    file("${path.module}/chart/values.yaml")
+  ]
+
+  set {
+    name  = "ingressClass"
+    value = var.ingress_class
+  }
 }

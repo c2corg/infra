@@ -11,7 +11,7 @@ spec:
     solvers:
     - http01:
         ingress:
-          class: haproxy
+          class: {{ .Values.ingress.class }}
           podTemplate:
             spec:
               nodeSelector:

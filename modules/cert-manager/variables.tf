@@ -1,6 +1,6 @@
 variable "chart_version" {
   type    = string
-  default = "v1.1.0"
+  default = "v1.9.1"
 }
 
 variable "enable_metrics" {
@@ -16,4 +16,8 @@ variable "metrics_namespace" {
 variable "namespace" {
   type    = string
   default = "cert-manager"
+}
+
+variable "ingress_class" {
+  default = "haproxy"
 }

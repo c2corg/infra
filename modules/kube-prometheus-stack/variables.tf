@@ -1,7 +1,3 @@
-variable "rabbitmq_host" {
-  type = list(string)
-}
-
 variable "grafana_admin_pwd" {
   type = string
 }
@@ -37,7 +33,7 @@ variable "grafana_pvc_name" {
 }
 
 variable "chart_version" {
-  default = "11.1.1"
+  default = "40.0.0"
 }
 
 variable "namespace" {
