@@ -6,7 +6,7 @@ module "c2corg_images" {
 
   enable_ingress = true
   enable_https   = true
-  service_hosts  = ["images.test.azure.dellalegal.com"]
+  service_hosts  = ["images.test.dellalegal.com"]
   cluster_issuer = module.cert-manager.cluster_issuer
 
   api_secret_key  = var.images_api_secret_key
