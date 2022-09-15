@@ -1,9 +1,11 @@
 variable "exoscale_api_key" {
-  type = string
+  type      = string
+  sensitive = true
 }
 
 variable "exoscale_api_secret" {
-  type = string
+  type      = string
+  sensitive = true
 }
 
 variable "environment" {
@@ -17,6 +19,7 @@ variable "default_zone" {
 variable "images_api_secret_key" {
   description = "Secret shared between v6_api and c2c_images"
   type        = string
+  sensitive   = true
 }
 
 variable "c2c_images_version" {
@@ -28,7 +31,8 @@ variable "kube_prometheus_stack_version" {
 }
 
 variable "grafana_admin_pwd" {
-  type = string
+  type      = string
+  sensitive = true
 }
 
 variable "cert_manager_version" {

@@ -14,8 +14,8 @@ module "c2c_images" {
   storage_backend = "s3"
   incoming_prefix = "EXO"
   active_prefix   = "EXO"
-  incoming_bucket = "c2corg-demov6-incoming"
-  active_bucket   = "c2corg-demov6-active"
+  incoming_bucket = aws_s3_bucket.incoming.bucket
+  active_bucket   = aws_s3_bucket.active.bucket
   prefixed_map = {
     EXO_ENDPOINT      = "https://sos.exo.io"
     EXO_ACCESS_KEY_ID = var.exoscale_api_key
