@@ -1,5 +1,5 @@
-resource "helm_release" "c2corg-images" {
-  name        = "c2corg-images"
+resource "helm_release" "c2c-images" {
+  name        = "c2c-images"
   chart       = "${path.module}/chart"
   namespace   = "default"
   max_history = 10
@@ -9,11 +9,11 @@ resource "helm_release" "c2corg-images" {
 
   set {
     name  = "pod.configmap"
-    value = kubernetes_config_map.c2corg-images-config-map.metadata[0].name
+    value = kubernetes_config_map.c2c-images-config-map.metadata[0].name
   }
   set {
     name  = "pod.secrets"
-    value = kubernetes_secret.c2corg-images-secrets.metadata[0].name
+    value = kubernetes_secret.c2c-images-secrets.metadata[0].name
   }
 
   set {
@@ -96,12 +96,12 @@ resource "helm_release" "c2corg-images" {
   }
 }
 
-resource "kubernetes_config_map" "c2corg-images-config-map" {
+resource "kubernetes_config_map" "c2c-images-config-map" {
   metadata {
-    name = "c2corg-images-config-map"
+    name = "c2c-images-config-map"
   }
   data = {
-    DEBUG           = "Della:c2c_images:*"
+    DEBUG           = "c2c_images:*"
     NODE_ENV        = var.environment
     METRICS_PORT    = var.metrics_port
     SERVICE_PORT    = var.service_port
@@ -117,9 +117,9 @@ resource "kubernetes_config_map" "c2corg-images-config-map" {
 }
 
 # Create secret for sensitive data
-resource "kubernetes_secret" "c2corg-images-secrets" {
+resource "kubernetes_secret" "c2c-images-secrets" {
   metadata {
-    name = "c2corg-images-secrets"
+    name = "c2c-images-secrets"
   }
   data = merge(var.prefixed_map, {
     API_SECRET_KEY = var.api_secret_key

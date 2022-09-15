@@ -19,7 +19,7 @@ variable "images_api_secret_key" {
   type        = string
 }
 
-variable "c2corg_images_version" {
+variable "c2c_images_version" {
   type = string
 }
 

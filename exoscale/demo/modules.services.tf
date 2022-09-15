@@ -1,7 +1,7 @@
-module "c2corg_images" {
-  source        = "../../modules/c2corg_images"
+module "c2c_images" {
+  source        = "../../modules/c2c_images"
   replica_count = 1
-  image_tag     = var.c2corg_images_version
+  image_tag     = var.c2c_images_version
   environment   = var.environment
 
   enable_ingress = true

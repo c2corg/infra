@@ -1,5 +1,5 @@
 # c2c services
-c2corg_images_version         = "v1.0.1"
+c2c_images_version         = "v1.0.2"
 
 # infra
 kube_prometheus_stack_version = "40.0.0"

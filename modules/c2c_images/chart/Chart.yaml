@@ -1,6 +1,6 @@
 apiVersion: v2
-name: c2corg-images
-description: A Helm chart for deploying c2corg_images in Kubernetes
+name: c2c-images
+description: A Helm chart for deploying c2c_images in Kubernetes
 
 type: application
 
