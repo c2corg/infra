@@ -5,7 +5,7 @@ variable "chart_version" {
 
 variable "enable_metrics" {
   type    = bool
-  default = false
+  default = true
 }
 
 variable "metrics_namespace" {
