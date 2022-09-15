@@ -6,7 +6,7 @@ module "c2c_images" {
 
   enable_ingress = true
   enable_https   = true
-  service_hosts  = ["images.demov6.camptocamp.org", "images.test.dellalegal.com"]
+  service_hosts  = ["images.demov6.camptocamp.org"]
   cluster_issuer = module.cert-manager.cluster_issuer
 
   api_secret_key  = var.images_api_secret_key
