@@ -96,7 +96,7 @@ resource "helm_release" "c2c-images" {
   }
 
   dynamic "set" {
-    for_each = var.clean_job_cron > 0 ? [var.clean_job_cron] : []
+    for_each = var.clean_job_cron != "" ? [var.clean_job_cron] : []
     content {
       name  = "cleanJob.cron"
       value = set.value
