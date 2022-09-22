@@ -6,7 +6,7 @@ module "images" {
 
   enable_ingress = true
   enable_https   = true
-  service_hosts  = ["images.${local.domain}"]
+  service_hosts  = [local.images_host]
   cluster_issuer = module.cert-manager.cluster_issuer
 
   api_secret_key  = var.images_api_secret_key
@@ -35,6 +35,6 @@ module "ui" {
 
   enable_ingress = true
   enable_https   = true
-  service_hosts  = ["www.${local.domain}"]
+  service_hosts  = [local.ui_host]
   cluster_issuer = module.cert-manager.cluster_issuer
 }
