@@ -94,6 +94,14 @@ resource "helm_release" "c2c-images" {
       value = "${set.value}Mi"
     }
   }
+
+  dynamic "set" {
+    for_each = var.clean_job_cron > 0 ? [var.clean_job_cron] : []
+    content {
+      name  = "cleanJob.cron"
+      value = set.value
+    }
+  }
 }
 
 resource "kubernetes_config_map" "c2c-images-config-map" {

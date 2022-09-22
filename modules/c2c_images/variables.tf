@@ -112,3 +112,8 @@ variable "max_memory" {
   type        = number
   default     = 0
 }
+
+variable "clean_job_cron" {
+  description = "Set the cron value if you want the clean job to regularly delete expired images from the incoming bucket"
+  default     = ""
+}

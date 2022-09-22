@@ -1,0 +1,40 @@
+{{- if .Values.cleanJob.cron -}}
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ include "microservice.fullname" . }}-cron
+  labels:
+    {{- include "microservice.labels" . | nindent 4 }}
+spec:
+  schedule: {{ .Values.cleanJob.cron }}
+  successfulJobsHistoryLimit: 0
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        metadata:
+          labels:
+            {{- include "microservice.labels" . | nindent 12 }}
+        spec:
+          {{- with .Values.imagePullSecrets }}
+          imagePullSecrets:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          serviceAccountName: {{ include "microservice.serviceAccountName" . }}
+          terminationGracePeriodSeconds: 0
+          restartPolicy: Never
+          containers:
+            - name: {{ .Chart.Name }}
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              envFrom:
+                - configMapRef:
+                    name: {{ .Values.pod.configmap }}
+                - secretRef:
+                    name : {{ .Values.pod.secrets }}
+              command:
+                - "npm"
+                - "run"
+                - "clean:incoming"
+{{- end }}

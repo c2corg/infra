@@ -1,4 +1,4 @@
-module "c2c_images" {
+module "images" {
   source        = "../../modules/c2c_images"
   replica_count = 1
   image_tag     = var.c2c_images_version
@@ -6,7 +6,7 @@ module "c2c_images" {
 
   enable_ingress = true
   enable_https   = true
-  service_hosts  = ["images.demov6.camptocamp.org"]
+  service_hosts  = ["images.${local.domain}"]
   cluster_issuer = module.cert-manager.cluster_issuer
 
   api_secret_key  = var.images_api_secret_key
@@ -21,4 +21,9 @@ module "c2c_images" {
     EXO_ACCESS_KEY_ID = var.exoscale_api_key
     EXO_SECRET_KEY    = var.exoscale_api_secret
   }
+
+  # exoscale doesn't support object lifecycle management,
+  # the clean script will remove expired images from the
+  # incoming bucket, every day at 04:07 UTC
+  clean_job_cron = "7 4 * * *"
 }
