@@ -64,5 +64,5 @@ tolerations: []
 
 affinity: {}
 
-cleanJob:
+cleanJob: {}
   # cron: "10 5 0 0 0"
