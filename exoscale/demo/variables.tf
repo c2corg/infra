@@ -26,6 +26,10 @@ variable "c2c_images_version" {
   type = string
 }
 
+variable "c2c_ui_version" {
+  type = string
+}
+
 variable "kube_prometheus_stack_version" {
   type = string
 }

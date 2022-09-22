@@ -27,3 +27,14 @@ module "images" {
   # incoming bucket, every day at 04:07 UTC
   clean_job_cron = "7 4 * * *"
 }
+
+module "ui" {
+  source        = "../../modules/c2c_ui"
+  replica_count = 1
+  image_tag     = var.c2c_ui_version
+
+  enable_ingress = true
+  enable_https   = true
+  service_hosts  = ["www.${local.domain}"]
+  cluster_issuer = module.cert-manager.cluster_issuer
+}
