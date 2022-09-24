@@ -17,7 +17,7 @@ module "images" {
   incoming_bucket = aws_s3_bucket.incoming.bucket
   active_bucket   = aws_s3_bucket.active.bucket
   prefixed_map = {
-    EXO_ENDPOINT      = "https://sos.exo.io"
+    EXO_ENDPOINT      = "https://${local.exoscale_sos_host}"
     EXO_ACCESS_KEY_ID = var.exoscale_api_key
     EXO_SECRET_KEY    = var.exoscale_api_secret
   }
