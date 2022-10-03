@@ -1,5 +1,5 @@
 # c2c services
-c2c_images_version            = "v1.1.1"
+c2c_images_version            = "v1.1.2"
 c2c_ui_version                = "v7.6.15"
 
 # infra
