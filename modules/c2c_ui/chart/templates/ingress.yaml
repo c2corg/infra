@@ -1,13 +1,7 @@
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "microservice.fullname" . -}}
 {{- $svcPort := .Values.service.port -}}
-{{- if .Capabilities.APIVersions.Has "networking.k8s.io/v1" -}}
 apiVersion: networking.k8s.io/v1
-{{- else if .Capabilities.APIVersions.Has "networking.k8s.io/v1beta1" -}}
-apiVersion: networking.k8s.io/v1beta1
-{{- else -}}
-apiVersion: extensions/v1beta1
-{{- end }}
 kind: Ingress
 metadata:
   name: {{ $fullName }}
@@ -18,6 +12,7 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
+  ingressClassName: {{ .Values.ingress.className }}
   {{- if .Values.ingress.tls }}
   tls:
     - hosts:
@@ -32,18 +27,11 @@ spec:
       http:
         paths:
           - path: /
-            {{- if $.Capabilities.APIVersions.Has "networking.k8s.io/v1" }}
             pathType: Prefix
-            {{- end }}
             backend:
-            {{- if $.Capabilities.APIVersions.Has "networking.k8s.io/v1" }}
               service:
                 name: {{ $fullName }}
                 port:
-                  number: {{ $svcPort }}
-            {{- else }}
-              serviceName: {{ $fullName }}
-              servicePort: {{ $svcPort }}
-            {{- end -}}
+                  name: http
     {{- end }}
-  {{- end }}
+{{- end }}

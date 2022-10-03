@@ -32,12 +32,14 @@ service:
   type: ClusterIP
   port: 8080
   metricsPort: 8081
+  annotations: {}
 
 ingress:
   enabled: false
   annotations: {}
   hosts: []
-  tls: true
+  tls: false
+  className: nginx
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

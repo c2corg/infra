@@ -10,14 +10,14 @@ prometheus:
     # Allow rules, serviceMonitors and podMonitors to be automaticaly discovered in any namespace
     # without filtering on labels
     podMonitorNamespaceSelector:
-      any: true
+      matchLabels: {}
     podMonitorSelector: {}
     podMonitorSelectorNilUsesHelmValues: false
     ruleNamespaceSelector:
-      any: true
+      matchLabels: {}
     ruleSelector: {}
     ruleSelectorNilUsesHelmValues: false
     serviceMonitorNamespaceSelector:
-      any: true
+      matchLabels: {}
     serviceMonitorSelector: {}
     serviceMonitorSelectorNilUsesHelmValues: false

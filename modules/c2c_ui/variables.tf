@@ -39,16 +39,22 @@ variable "service_port" {
   default = 8080
 }
 
+variable "health_port" {
+  description = "Only for internal use. Service port is using proxy_protocol, which k8s probs don't support"
+  type        = number
+  default     = 8081
+}
+
 variable "min_cpu" {
   description = "Requested cpu. Set to 0 to remove constraint"
   type        = number
-  default     = 300
+  default     = 0
 }
 
 variable "min_memory" {
   description = "Requested memory. Set to 0 to remove constraint"
   type        = number
-  default     = 256
+  default     = 0
 }
 
 variable "max_cpu" {

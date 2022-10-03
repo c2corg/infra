@@ -26,13 +26,22 @@ resource "helm_release" "c2c-ui" {
   }
 
   set {
-    name  = "service_port"
+    name  = "service.port"
     value = var.service_port
+  }
+
+  set {
+    name  = "service.healthPort"
+    value = var.health_port
   }
 
   set {
     name  = "ingress.enabled"
     value = var.enable_ingress
+  }
+  set {
+    name  = "ingress.className"
+    value = var.ingress_class
   }
   set {
     name  = "ingress.tls"
@@ -46,10 +55,6 @@ resource "helm_release" "c2c-ui" {
     }
   }
   set {
-    name  = "ingress.annotations.kubernetes\\.io/ingress\\.class"
-    value = "haproxy"
-  }
-  set {
     # The name of the cluster issuer to acquire the certificate for this ingress
     # The sub-component ingress-shim watches Ingress resources across your cluster,
     # and on observing the following, it will ensure a certificate resource is created
@@ -58,9 +63,9 @@ resource "helm_release" "c2c-ui" {
     type  = "string"
   }
   set {
-    # nginx is configured with proxy protocol
-    name  = "ingress.annotations.ingress\\.kubernetes\\.io/proxy-protocol"
-    value = "v2"
+    # ui's nginx is configured with proxy protocol
+    name  = "ingress.annotations.ingress\\.kubernetes\\.io/send-proxy-protocol"
+    value = "proxy-v2"
   }
 
   dynamic "set" {
@@ -98,7 +103,8 @@ resource "kubernetes_config_map" "c2c-ui-config-map" {
     name = "c2c-ui-config-map"
   }
   data = {
-    PORT        = var.service_port
-    SERVER_NAME = join(" ", var.service_hosts)
+    PORT             = var.service_port
+    HEALTH_HTTP_PORT = var.health_port
+    SERVER_NAME      = join(" ", var.service_hosts)
   }
 }

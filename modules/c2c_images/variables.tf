@@ -92,13 +92,13 @@ variable "prefixed_map" {
 variable "min_cpu" {
   description = "Requested cpu. Set to 0 to remove constraint"
   type        = number
-  default     = 300
+  default     = 0
 }
 
 variable "min_memory" {
   description = "Requested memory. Set to 0 to remove constraint"
   type        = number
-  default     = 256
+  default     = 0
 }
 
 variable "max_cpu" {

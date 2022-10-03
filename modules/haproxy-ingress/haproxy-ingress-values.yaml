@@ -1,5 +1,9 @@
-controller:
-  hostNetwork: true
-
 defaultBackend:
   enabled: false
+
+ingressClassResource:
+  default: true
+
+controller:
+  service:
+    type: "LoadBalancer"

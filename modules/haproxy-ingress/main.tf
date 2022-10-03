@@ -1,7 +1,7 @@
 resource "helm_release" "haproxy_ingress" {
   name             = "haproxy-ingress"
-  chart            = "haproxy-ingress"
-  repository       = "https://haproxy-ingress.github.io/charts"
+  chart            = "kubernetes-ingress"
+  repository       = "https://haproxytech.github.io/helm-charts"
   namespace        = var.namespace
   create_namespace = true
   skip_crds        = false
@@ -18,17 +18,7 @@ resource "helm_release" "haproxy_ingress" {
   }
 
   set {
-    name  = "controller.metrics.serviceMonitor.enabled"
-    value = var.enable_metrics
-  }
-
-  set {
-    name  = "controller.metrics.enabled"
-    value = var.enable_metrics
-  }
-
-  set {
-    name  = "controller.stats.enabled"
+    name  = "serviceMonitor.enabled"
     value = var.enable_metrics
   }
 

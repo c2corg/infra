@@ -43,6 +43,10 @@ resource "helm_release" "c2c-images" {
     value = var.enable_ingress
   }
   set {
+    name  = "ingress.className"
+    value = var.ingress_class
+  }
+  set {
     name  = "ingress.tls"
     value = var.enable_https
   }
@@ -52,10 +56,6 @@ resource "helm_release" "c2c-images" {
       name  = "ingress.hosts[${set.key}].host"
       value = set.value
     }
-  }
-  set {
-    name  = "ingress.annotations.kubernetes\\.io/ingress\\.class"
-    value = "haproxy"
   }
   set {
     # The name of the cluster issuer to acquire the certificate for this ingress
