@@ -38,3 +38,33 @@ module "ui" {
   service_hosts  = [local.ui_host]
   cluster_issuer = module.cert-manager.cluster_issuer
 }
+
+module "tracking" {
+  source        = "../../modules/c2c_tracking"
+  replica_count = 1
+  image_tag     = var.c2c_tracking_version
+  environment   = var.environment
+
+  enable_ingress = true
+  enable_https   = true
+  service_hosts  = [local.tracking_host]
+  cluster_issuer = module.cert-manager.cluster_issuer
+
+  server_base_url                          = "https://${local.tracking_host}/"
+  db_host                                  = module.postgresql.host
+  db_port                                  = module.postgresql.port
+  db_name                                  = local.postgres_db
+  db_user                                  = local.postgres_username
+  db_password                              = local.postgres_password
+  jwt_secret_key                           = var.jwt_secret_key
+  frontend_base_url                        = "https://${local.ui_host}/"
+  strava_client_id                         = "63968"
+  strava_client_secret                     = var.strava_client_secret
+  strava_webhook_subscription_verify_token = var.strava_webhook_subscription_verify_token
+  suunto_client_id                         = "2928e564-85eb-4aef-92fb-2a0259589c9c"
+  suunto_client_secret                     = var.strava_client_secret
+  suunto_subscription_key                  = var.suunto_subscription_key
+  suunto_webhook_subscription_token        = var.suunto_webhook_subscription_token
+  garmin_consumer_key                      = "f6af0bcb-ed47-4383-90e8-46351c764d4b"
+  garmin_consumer_secret                   = var.garmin_consumer_secret
+}

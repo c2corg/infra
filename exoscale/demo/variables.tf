@@ -58,3 +58,38 @@ variable "cert_manager_version" {
 variable "haproxy_ingress_version" {
   type = string
 }
+
+variable "jwt_secret_key" {
+  type      = string
+  sensitive = true
+}
+
+variable "strava_client_secret" {
+  type      = string
+  sensitive = true
+}
+
+variable "strava_webhook_subscription_verify_token" {
+  type      = string
+  sensitive = true
+}
+
+variable "suunto_client_secret" {
+  type      = string
+  sensitive = true
+}
+
+variable "suunto_subscription_key" {
+  type      = string
+  sensitive = true
+}
+
+variable "suunto_webhook_subscription_token" {
+  type      = string
+  sensitive = true
+}
+
+variable "garmin_consumer_secret" {
+  type      = string
+  sensitive = true
+}
