@@ -11,7 +11,7 @@ updates:
       interval: "weekly"
       
   - package-ecosystem: "terraform"
-    directory: "/exoscale/prod"
+    directory: "/exoscale/production"
     schedule:
       interval: "weekly"
 
