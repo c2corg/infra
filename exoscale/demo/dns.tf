@@ -12,6 +12,7 @@ locals {
   ui_host           = "www.${local.domain}"
   images_host       = "images.${local.domain}"
   api_host          = "api.${local.domain}"
+  tracking_host     = "tracking.${local.domain}"
   discourse_host    = "forum.${local.domain}"
   grafana           = "grafana.${local.domain}"
   exoscale_sos_host = "sos.exo.io"
