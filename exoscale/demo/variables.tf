@@ -93,3 +93,8 @@ variable "garmin_consumer_secret" {
   type      = string
   sensitive = true
 }
+
+variable "mail_password" {
+  type      = string
+  sensitive = true
+}
