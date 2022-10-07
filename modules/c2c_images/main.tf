@@ -37,6 +37,10 @@ resource "helm_release" "c2c-images" {
     name  = "metrics_port"
     value = var.metrics_port
   }
+  set {
+    name  = "metrics.enabled"
+    value = var.enable_metrics
+  }
 
   set {
     name  = "ingress.enabled"
@@ -109,18 +113,19 @@ resource "kubernetes_config_map" "c2c-images-config-map" {
     name = "c2c-images-config-map"
   }
   data = {
-    DEBUG           = "c2c_images:*"
-    NODE_ENV        = var.environment
-    METRICS_PORT    = var.metrics_port
-    SERVICE_PORT    = var.service_port
-    TEMP_FOLDER     = var.temp_folder
-    STORAGE_BACKEND = var.storage_backend
-    INCOMING_BUCKET = var.incoming_bucket
-    ACTIVE_BUCKET   = var.active_bucket
-    INCOMING_FOLDER = var.incoming_folder
-    ACTIVE_FOLDER   = var.active_folder
-    INCOMING_PREFIX = var.incoming_prefix
-    ACTIVE_PREFIX   = var.active_prefix
+    DEBUG                      = "c2c_images:*"
+    NODE_ENV                   = var.environment
+    METRICS_PORT               = var.metrics_port
+    SERVICE_PORT               = var.service_port
+    TEMP_FOLDER                = var.temp_folder
+    STORAGE_BACKEND            = var.storage_backend
+    INCOMING_BUCKET            = var.incoming_bucket
+    ACTIVE_BUCKET              = var.active_bucket
+    INCOMING_FOLDER            = var.incoming_folder
+    ACTIVE_FOLDER              = var.active_folder
+    INCOMING_PREFIX            = var.incoming_prefix
+    ACTIVE_PREFIX              = var.active_prefix
+    DISABLE_PROMETHEUS_METRICS = var.enable_metrics ? "0" : "1"
   }
 }
 

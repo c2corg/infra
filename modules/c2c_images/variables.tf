@@ -118,3 +118,8 @@ variable "clean_job_cron" {
   type        = string
   default     = ""
 }
+
+variable "enable_metrics" {
+  default = false
+  type    = bool
+}

@@ -37,9 +37,11 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+            {{- if .Values.metrics.enabled }}
             - name: http-metrics
               containerPort: {{ .Values.service.metricsPort }}
               protocol: TCP
+            {{- end }}
           livenessProbe:
             httpGet:
               path: /ping
