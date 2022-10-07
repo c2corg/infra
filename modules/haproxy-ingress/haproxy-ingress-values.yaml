@@ -7,3 +7,5 @@ ingressClassResource:
 controller:
   service:
     type: "LoadBalancer"
+  serviceMonitor:
+    enabled: false

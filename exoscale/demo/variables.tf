@@ -16,6 +16,10 @@ variable "default_zone" {
   type = string
 }
 
+variable "enable_metrics" {
+  type = bool
+}
+
 variable "images_api_secret_key" {
   description = "Secret shared between v6_api and c2c_images"
   type        = string
@@ -34,15 +38,19 @@ variable "c2c_tracking_version" {
   type = string
 }
 
-variable "postgresql_version" {
+variable "postgresql_chart_version" {
   type = string
 }
 
-variable "longhorn_version" {
+variable "longhorn_chart_version" {
   type = string
 }
 
-variable "kube_prometheus_stack_version" {
+variable "kube_prometheus_stack_chart_version" {
+  type = string
+}
+
+variable "redis_chart_version" {
   type = string
 }
 
@@ -51,11 +59,11 @@ variable "grafana_admin_pwd" {
   sensitive = true
 }
 
-variable "cert_manager_version" {
+variable "cert_manager_chart_version" {
   type = string
 }
 
-variable "haproxy_ingress_version" {
+variable "haproxy_kubernetes_ingress_chart_version" {
   type = string
 }
 

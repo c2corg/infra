@@ -10,18 +10,8 @@ resource "helm_release" "postgres" {
   ]
 
   set {
-    name  = "auth.username"
-    value = var.postgres_username
-  }
-
-  set {
-    name  = "auth.password"
+    name  = "auth.postgresPassword"
     value = var.postgres_password
-  }
-
-  set {
-    name  = "auth.database"
-    value = var.postgres_db
   }
 
   set {
@@ -32,5 +22,24 @@ resource "helm_release" "postgres" {
   set {
     name  = "primary.persistence.existingClaim"
     value = var.pvc_name
+  }
+
+  set {
+    name  = "metrics.enabled"
+    value = var.enable_metrics
+  }
+
+  set {
+    name  = "metrics.serviceMonitor.enabled"
+    value = var.enable_metrics
+  }
+
+  dynamic "set" {
+    for_each = var.initDbScritps
+
+    content {
+      name  = "primary.initdb.scripts.${set.key}"
+      value = set.value
+    }
   }
 }

@@ -18,7 +18,7 @@ resource "helm_release" "haproxy_ingress" {
   }
 
   set {
-    name  = "serviceMonitor.enabled"
+    name  = "controller.serviceMonitor.enabled"
     value = var.enable_metrics
   }
 

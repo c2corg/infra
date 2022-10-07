@@ -9,6 +9,8 @@ module "images" {
   service_hosts  = [local.images_host]
   cluster_issuer = module.cert-manager.cluster_issuer
 
+  enable_metrics = var.enable_metrics
+
   api_secret_key  = var.images_api_secret_key
   temp_folder     = "/srv/images/temp"
   storage_backend = "s3"
@@ -53,9 +55,9 @@ module "tracking" {
   server_base_url                          = "https://${local.tracking_host}/"
   db_host                                  = module.postgresql.host
   db_port                                  = module.postgresql.port
-  db_name                                  = local.postgres_db
-  db_user                                  = local.postgres_username
-  db_password                              = local.postgres_password
+  db_name                                  = local.tracking_db_name
+  db_user                                  = local.tracking_db_user
+  db_password                              = local.tracking_db_pwd
   jwt_secret_key                           = var.jwt_secret_key
   frontend_base_url                        = "https://${local.ui_host}/"
   strava_client_id                         = "63968"

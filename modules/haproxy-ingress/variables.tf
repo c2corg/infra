@@ -16,7 +16,7 @@ variable "replica_count" {
 
 variable "enable_metrics" {
   type    = bool
-  default = true
+  default = false
 }
 
 variable "namespace" {
