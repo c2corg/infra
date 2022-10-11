@@ -1,5 +1,5 @@
 # services
-c2c_images_version                       = "v1.2.0"
+c2c_images_version                       = "v1.2.1"
 c2c_ui_version                           = "v7.6.15"
 c2c_tracking_version                     = "main"
 

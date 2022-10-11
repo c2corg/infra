@@ -125,6 +125,7 @@ resource "kubernetes_config_map" "c2c-images-config-map" {
     ACTIVE_FOLDER              = var.active_folder
     INCOMING_PREFIX            = var.incoming_prefix
     ACTIVE_PREFIX              = var.active_prefix
+    RESIZING_CONFIG            = length(var.resizing_config) == 0 ? "" : jsonencode(var.resizing_config)
     DISABLE_PROMETHEUS_METRICS = var.enable_metrics ? "0" : "1"
   }
 }

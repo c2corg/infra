@@ -21,16 +21,20 @@ module "postgresql" {
   enable_metrics = var.enable_metrics
 
   initDbScritps = {
+    # Create tracking user and database
     "tracking\\.sql" = <<EOT
 CREATE USER ${local.tracking_db_user} WITH PASSWORD '${local.tracking_db_pwd}';
 CREATE DATABASE '${local.tracking_db_name}';
 GRANT ALL PRIVILEGES ON DATABASE '${local.tracking_db_name}' TO '${local.tracking_db_user}';
 EOT
-    "api\\.sql"      = <<EOT
+    # Create api user and database
+    "api\\.sql" = <<EOT
 CREATE USER '${local.api_db_user}' WITH PASSWORD '${local.api_db_pwd}';
 CREATE DATABASE '${local.api_db_name}';
 GRANT ALL PRIVILEGES ON DATABASE '${local.api_db_name}' TO '${local.api_db_user}';
 EOT
+    # Enable postgis (postgis is included in bitnami image)
+    "postgis\\.sql" = "CREATE EXTENSION postgis;"
   }
 }
 

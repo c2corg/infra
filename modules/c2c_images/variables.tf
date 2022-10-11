@@ -89,6 +89,14 @@ variable "prefixed_map" {
   default = {}
 }
 
+variable "resizing_config" {
+  type = list(object({
+    suffix  = string
+    convert = list(string)
+  }))
+  default = []
+}
+
 variable "min_cpu" {
   description = "Requested cpu. Set to 0 to remove constraint"
   type        = number
