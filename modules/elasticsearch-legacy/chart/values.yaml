@@ -1,0 +1,15 @@
+clusterName: c2corg
+
+image:
+  repository: elasticsearch
+
+serviceAccount:
+  create: true
+
+service:
+  type: ClusterIP
+  annotations: {}
+
+publishPort: 9200
+
+persistence: {}

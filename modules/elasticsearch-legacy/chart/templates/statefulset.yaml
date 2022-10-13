@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "microservice.fullname" . }}
+  labels:
+    {{- include "microservice.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "microservice.selectorLabels" . | nindent 6 }}
+  serviceName: {{ include "microservice.fullname" . }}
+  template:
+    metadata:
+    {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      labels:
+        {{- include "microservice.selectorLabels" . | nindent 8 }}
+    spec:
+      serviceAccountName: {{ include "microservice.serviceAccountName" . }}
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          args:
+            - "-Des.cluster.name={{ .Values.clusterName }}"
+            - "-Des.bootstrap.mlockall=true"
+            - "-Des.http.publish_port=9200"
+            - "-Des.script.inline=false"
+            - "-Des.script.indexed=false"
+            - "-Des.script.file=false"
+            # - "-Des.discovery.zen.ping.multicast=disabled"
+            # - "-Des.discovery.zen.ping.unicast.hosts=${PROD_ELASTICSEARCH0_ADDRESS},${PROD_ELASTICSEARCH1_ADDRESS},${PROD_ELASTICSEARCH2_ADDRESS}"
+            - "-Des.index.number_of_replicas=1"
+            - "-Des.index.refresh_interval=30s"
+            - "-Des.index.translog.flush_threshold_ops=5000"
+          env:
+            {{- if .Values.heapSize }}
+            - name: ES_HEAP_SIZE
+              value: {{ .Values.master.heapSize | quote }}
+            {{- end }}
+          ports:
+            - name: rest-api
+              containerPort: 9200
+            - name: transport
+              containerPort: 9300
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        {{- if .Values.persistence.existingClaim  }}
+        - name: "data"
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.existingClaim }}
+        {{- else }}
+        - name: "data"
+          emptyDir: {}
+        {{- end }}
