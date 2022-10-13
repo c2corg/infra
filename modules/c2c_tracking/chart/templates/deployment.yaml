@@ -47,11 +47,17 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          {{- if or .Values.pod.configmap .Values.pod.secrets }}
           envFrom:
+            {{- if .Values.pod.configmap }}
             - configMapRef:
                 name: {{ .Values.pod.configmap }}
+            {{- end }}
+            {{- if .Values.pod.secrets }}
             - secretRef:
                 name : {{ .Values.pod.secrets }}
+            {{- end }}
+          {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

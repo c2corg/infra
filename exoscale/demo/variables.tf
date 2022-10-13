@@ -54,6 +54,10 @@ variable "redis_chart_version" {
   type = string
 }
 
+variable "elasticsearch_version" {
+  type = string
+}
+
 variable "grafana_admin_pwd" {
   type      = string
   sensitive = true

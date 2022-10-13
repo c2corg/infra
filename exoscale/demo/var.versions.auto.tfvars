@@ -6,6 +6,7 @@ c2c_tracking_version                     = "main"
 # databases
 postgresql_chart_version                 = "11.9.6"
 redis_chart_version                      = "17.3.2"
+elasticsearch_version                    = "2.4.6-alpine"
 
 # infra
 kube_prometheus_stack_chart_version      = "40.3.1"

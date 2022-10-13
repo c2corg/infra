@@ -62,3 +62,26 @@ module "redis" {
 
   enable_metrics = var.enable_metrics
 }
+
+# Elastic search used for search
+
+module "elasticsearch" {
+  source                = "../../modules/elasticsearch-legacy"
+  elasticsearch_version = var.elasticsearch_version
+  pvc_name              = kubernetes_persistent_volume_claim_v1.elasticsearch.metadata.0.name
+}
+
+resource "kubernetes_persistent_volume_claim_v1" "elasticsearch" {
+  metadata {
+    name = "elasticsearch"
+  }
+  spec {
+    access_modes = ["ReadWriteMany"]
+    resources {
+      requests = {
+        storage = "10Gi"
+      }
+    }
+    storage_class_name = "longhorn"
+  }
+}

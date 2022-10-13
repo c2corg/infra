@@ -38,7 +38,7 @@ Common labels
 helm.sh/chart: {{ include "microservice.chart" . }}
 {{ include "microservice.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+app.kubernetes.io/version: {{ default .Chart.AppVersion .Values.image.tag | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}

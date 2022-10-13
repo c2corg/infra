@@ -6,6 +6,15 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+image:
+  repository: "c2corg/c2c_images"
+  tag: ""
+
+metrics:
+  enabled: false
+
+pod: {}
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
