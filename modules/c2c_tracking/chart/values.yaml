@@ -66,7 +66,7 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   targetMemoryUtilizationPercentage: 80
 
-relicaCount: 1
+replicaCount: 1
 
 nodeSelector: {}
 
