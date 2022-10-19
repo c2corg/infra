@@ -3,4 +3,3 @@ name: cert-issuer
 description: Helm chart for installing the certificate issuer for cert-manager
 type: application
 version: 0.0.1
-appVersion: v0.0.1
