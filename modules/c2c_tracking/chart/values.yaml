@@ -7,6 +7,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 image:
+  pullPolicy: IfNotPresent
   repository: "c2corg/c2c_tracking"
   tag: ""
 

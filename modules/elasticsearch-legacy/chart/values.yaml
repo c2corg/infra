@@ -1,6 +1,7 @@
 clusterName: c2corg
 
 image:
+  pullPolicy: IfNotPresent
   repository: elasticsearch
 
 serviceAccount:
