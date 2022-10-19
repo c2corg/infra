@@ -11,13 +11,16 @@ module "images" {
 
   enable_metrics = var.enable_metrics
 
-  api_secret_key  = var.images_api_secret_key
-  temp_folder     = "/srv/images/temp"
-  storage_backend = "s3"
-  incoming_prefix = "EXO"
-  active_prefix   = "EXO"
-  incoming_bucket = aws_s3_bucket.incoming.bucket
-  active_bucket   = aws_s3_bucket.active.bucket
+  api_secret_key       = var.images_api_secret_key
+  temp_folder          = "/srv/images/temp"
+  storage_backend      = "s3"
+  incoming_prefix      = "EXO"
+  active_prefix        = "EXO"
+  incoming_bucket      = aws_s3_bucket.incoming.bucket
+  active_bucket        = aws_s3_bucket.active.bucket
+  generate_webp        = true
+  generate_avif        = true
+  auto_orient_original = true
   prefixed_map = {
     EXO_ENDPOINT      = "https://${local.exoscale_sos_host}"
     EXO_ACCESS_KEY_ID = var.exoscale_api_key

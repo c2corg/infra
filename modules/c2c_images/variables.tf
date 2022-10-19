@@ -97,6 +97,21 @@ variable "resizing_config" {
   default = []
 }
 
+variable "auto_orient_original" {
+  type    = bool
+  default = false
+}
+
+variable "generate_webp" {
+  type    = bool
+  default = false
+}
+
+variable "generate_avif" {
+  type    = bool
+  default = false
+}
+
 variable "min_cpu" {
   description = "Requested cpu. Set to 0 to remove constraint"
   type        = number

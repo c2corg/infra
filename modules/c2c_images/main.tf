@@ -126,6 +126,9 @@ resource "kubernetes_config_map" "c2c-images-config-map" {
     INCOMING_PREFIX            = var.incoming_prefix
     ACTIVE_PREFIX              = var.active_prefix
     RESIZING_CONFIG            = length(var.resizing_config) == 0 ? "" : jsonencode(var.resizing_config)
+    AUTO_ORIENT_ORIGINAL       = var.auto_orient_original ? "1" : "0"
+    GENERATE_WEBP              = var.generate_webp ? "1" : "0"
+    GENERATE_AVIF              = var.generate_avif ? "1" : "0"
     DISABLE_PROMETHEUS_METRICS = var.enable_metrics ? "0" : "1"
   }
 }
