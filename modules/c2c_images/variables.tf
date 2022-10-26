@@ -43,7 +43,7 @@ variable "service_port" {
   default = 8080
 }
 
-variable "metrics_port" {
+variable "service_metrics_port" {
   type    = number
   default = 8081
 }

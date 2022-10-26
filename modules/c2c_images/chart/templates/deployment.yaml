@@ -35,11 +35,11 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: {{ .Values.service.port }}
+              containerPort: 8080
               protocol: TCP
             {{- if .Values.metrics.enabled }}
             - name: http-metrics
-              containerPort: {{ .Values.service.metricsPort }}
+              containerPort: 8081
               protocol: TCP
             {{- end }}
           livenessProbe:

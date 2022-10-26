@@ -67,6 +67,11 @@ variable "service_port" {
   type    = number
 }
 
+variable "service_metrics_port" {
+  type    = number
+  default = 8081
+}
+
 variable "server_base_url" {
   type = string
 }
@@ -149,4 +154,9 @@ variable "garmin_consumer_key" {
 variable "garmin_consumer_secret" {
   type      = string
   sensitive = true
+}
+
+variable "enable_metrics" {
+  default = false
+  type    = bool
 }

@@ -30,8 +30,17 @@ resource "helm_release" "c2c-tracking" {
   }
 
   set {
-    name  = "service_port"
+    name  = "service.port"
     value = var.service_port
+  }
+
+  set {
+    name  = "service.metricsPort"
+    value = var.service_metrics_port
+  }
+  set {
+    name  = "metrics.enabled"
+    value = var.enable_metrics
   }
 
   set {
@@ -98,7 +107,8 @@ resource "kubernetes_config_map" "c2c-tracking-config-map" {
   }
   data = {
     NODE_ENV            = var.environment
-    PORT                = var.service_port
+    PORT                = 8080
+    METRICS_PORT        = 8081
     SERVER_BASE_URL     = var.server_base_url
     DB_HOST             = var.db_host
     DB_NAME             = var.db_name

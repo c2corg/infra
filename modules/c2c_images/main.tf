@@ -30,12 +30,12 @@ resource "helm_release" "c2c-images" {
   }
 
   set {
-    name  = "service_port"
+    name  = "service.port"
     value = var.service_port
   }
   set {
-    name  = "metrics_port"
-    value = var.metrics_port
+    name  = "service.metricsPort"
+    value = var.service_metrics_port
   }
   set {
     name  = "metrics.enabled"
@@ -115,8 +115,8 @@ resource "kubernetes_config_map" "c2c-images-config-map" {
   data = {
     DEBUG                      = "c2c_images:*"
     NODE_ENV                   = var.environment
-    METRICS_PORT               = var.metrics_port
-    SERVICE_PORT               = var.service_port
+    METRICS_PORT               = 8080
+    SERVICE_PORT               = 8081
     TEMP_FOLDER                = var.temp_folder
     STORAGE_BACKEND            = var.storage_backend
     INCOMING_BUCKET            = var.incoming_bucket
