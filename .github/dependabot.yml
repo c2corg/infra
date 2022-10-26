@@ -5,10 +5,10 @@
 
 version: 2
 updates:
-  - package-ecosystem: "terraform"
-    directory: "/exoscale/demo"
-    schedule:
-      interval: "weekly"
+  # - package-ecosystem: "terraform"
+  #   directory: "/exoscale/demo"
+  #   schedule:
+  #     interval: "weekly"
       
   - package-ecosystem: "terraform"
     directory: "/exoscale/production"
