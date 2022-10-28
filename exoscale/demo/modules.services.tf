@@ -55,12 +55,15 @@ module "tracking" {
   service_hosts  = [local.tracking_host]
   cluster_issuer = module.cert-manager.cluster_issuer
 
+  enable_metrics = var.enable_metrics
+
   server_base_url                          = "https://${local.tracking_host}/"
   db_host                                  = module.postgresql.host
   db_port                                  = module.postgresql.port
   db_name                                  = local.tracking_db_name
   db_user                                  = local.tracking_db_user
   db_password                              = local.tracking_db_pwd
+  db_crypto                                = var.db_crypto
   jwt_secret_key                           = var.jwt_secret_key
   frontend_base_url                        = "https://${local.ui_host}/"
   strava_client_id                         = "63968"
@@ -72,4 +75,6 @@ module "tracking" {
   suunto_webhook_subscription_token        = var.suunto_webhook_subscription_token
   garmin_consumer_key                      = "f6af0bcb-ed47-4383-90e8-46351c764d4b"
   garmin_consumer_secret                   = var.garmin_consumer_secret
+  decathlon_client_secret                  = var.decathlon_client_secret
+  decathlon_api_key                        = var.decathlon_api_key
 }

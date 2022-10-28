@@ -130,11 +130,14 @@ resource "kubernetes_secret" "c2c-tracking-secrets" {
   data = {
     DB_PASSWORD                              = var.db_password
     JWT_SECRET_KEY                           = var.jwt_secret_key
+    DB_CRYPTO                                = var.db_crypto
     STRAVA_CLIENT_SECRET                     = var.strava_client_secret
     STRAVA_WEBHOOK_SUBSCRIPTION_VERIFY_TOKEN = var.strava_webhook_subscription_verify_token
     SUUNTO_CLIENT_SECRET                     = var.suunto_client_secret
     SUUNTO_SUBSCRIPTION_KEY                  = var.suunto_subscription_key
     SUUNTO_WEBHOOK_SUBSCRIPTION_TOKEN        = var.suunto_webhook_subscription_token
     GARMIN_CONSUMER_SECRET                   = var.garmin_consumer_secret
+    DECATHLON_CLIENT_SECRET                  = var.decathlon_client_secret
+    DECATHLON_API_KEY                        = var.decathlon_api_key
   }
 }

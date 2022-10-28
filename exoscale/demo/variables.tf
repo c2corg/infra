@@ -76,6 +76,11 @@ variable "jwt_secret_key" {
   sensitive = true
 }
 
+variable "db_crypto" {
+  type      = string
+  sensitive = true
+}
+
 variable "strava_client_secret" {
   type      = string
   sensitive = true
@@ -102,6 +107,16 @@ variable "suunto_webhook_subscription_token" {
 }
 
 variable "garmin_consumer_secret" {
+  type      = string
+  sensitive = true
+}
+
+variable "decathlon_client_secret" {
+  type      = string
+  sensitive = true
+}
+
+variable "decathlon_api_key" {
   type      = string
   sensitive = true
 }

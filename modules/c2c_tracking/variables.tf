@@ -102,7 +102,13 @@ variable "db_password" {
 }
 
 variable "jwt_secret_key" {
-  type = string
+  type      = string
+  sensitive = true
+}
+
+variable "db_crypto" {
+  type      = string
+  sensitive = true
 }
 
 variable "frontend_base_url" {
@@ -152,6 +158,15 @@ variable "garmin_consumer_key" {
 }
 
 variable "garmin_consumer_secret" {
+  type      = string
+  sensitive = true
+}
+
+variable "decathlon_client_secret" {
+  type = string
+}
+
+variable "decathlon_api_key" {
   type      = string
   sensitive = true
 }
