@@ -1,7 +1,7 @@
 # services
-c2c_images_version                       = "v1.6.0"
+c2c_images_version                       = "v1.6.2"
 c2c_ui_version                           = "v7.6.18"
-c2c_tracking_version                     = "v1.0.0-rc.1"
+c2c_tracking_version                     = "v1.0.0-rc.2"
 
 # databases
 postgresql_chart_version                 = "11.9.6"

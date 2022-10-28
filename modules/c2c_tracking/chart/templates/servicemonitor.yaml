@@ -1,0 +1,20 @@
+{{- if .Values.metrics.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "microservice.fullname" . }}
+  labels:
+    app: {{ include "microservice.fullname" . }}
+spec:
+  jobLabel: {{ include "microservice.fullname" . }}
+  namespaceSelector:
+    matchNames:
+    - default # the service runs in the default namespace
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "microservice.fullname" . }}
+  endpoints:
+  - port: http-metrics # name of the service port for the metrics
+    path: /metrics
+    interval: 20s
+{{- end }}

@@ -12,7 +12,6 @@ module "images" {
   enable_metrics = var.enable_metrics
 
   api_secret_key       = var.images_api_secret_key
-  temp_folder          = "/srv/images/temp"
   storage_backend      = "s3"
   incoming_prefix      = "EXO"
   active_prefix        = "EXO"

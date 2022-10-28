@@ -53,7 +53,8 @@ variable "storage_backend" {
 }
 
 variable "temp_folder" {
-  type = string
+  default = ""
+  type    = string
 }
 
 variable "incoming_bucket" {
