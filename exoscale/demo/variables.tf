@@ -38,6 +38,10 @@ variable "c2c_tracking_version" {
   type = string
 }
 
+variable "v6_api_version" {
+  type = string
+}
+
 variable "postgresql_chart_version" {
   type = string
 }

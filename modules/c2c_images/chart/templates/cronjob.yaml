@@ -34,7 +34,7 @@ spec:
                 - secretRef:
                     name : {{ .Values.pod.secrets }}
               command:
-                - "npm"
-                - "run"
-                - "clean:incoming"
+                - "dumb-init"
+                - "node"
+                - "scripts/clean.js"
 {{- end }}
