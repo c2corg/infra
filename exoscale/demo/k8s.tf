@@ -4,11 +4,21 @@ resource "exoscale_sks_cluster" "c2c" {
   service_level = "starter"
 }
 
+# This is used to configure kubernetes & helm providers.
+# If the config expires, apply will fail because it will
+# try to read kubernetes status before having renewed this.
+# The solution is then to temporarily switch provider to local
+# kube config.
+# By using an early renewal (one month) we expect that we'll never
+# get to that status (it requires kubernetes to be applied at least
+# once a month).
 resource "exoscale_sks_kubeconfig" "c2c" {
-  cluster_id = exoscale_sks_cluster.c2c.id
-  zone       = exoscale_sks_cluster.c2c.zone
-  user       = "kubernetes-admin"
-  groups     = ["system:masters"]
+  cluster_id            = exoscale_sks_cluster.c2c.id
+  zone                  = exoscale_sks_cluster.c2c.zone
+  user                  = "kubernetes-admin"
+  groups                = ["system:masters"]
+  ttl_seconds           = 25920000 # 300 days
+  early_renewal_seconds = 2592000  # 30 days
 }
 
 resource "exoscale_sks_nodepool" "pool1" {
