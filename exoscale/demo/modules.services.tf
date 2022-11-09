@@ -69,7 +69,7 @@ module "tracking" {
   strava_client_secret                     = var.strava_client_secret
   strava_webhook_subscription_verify_token = var.strava_webhook_subscription_verify_token
   suunto_client_id                         = "2928e564-85eb-4aef-92fb-2a0259589c9c"
-  suunto_client_secret                     = var.strava_client_secret
+  suunto_client_secret                     = var.suunto_client_secret
   suunto_subscription_key                  = var.suunto_subscription_key
   suunto_webhook_subscription_token        = var.suunto_webhook_subscription_token
   garmin_consumer_key                      = "f6af0bcb-ed47-4383-90e8-46351c764d4b"
