@@ -1,7 +1,7 @@
 # services
 c2c_images_version                       = "v1.6.2"
 c2c_ui_version                           = "tracking"
-c2c_tracking_version                     = "v1.0.0-rc.7"
+c2c_tracking_version                     = "v1.0.0-rc.8"
 v6_api_version                           = "v6.11.0"
 
 # databases
