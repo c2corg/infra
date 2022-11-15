@@ -113,6 +113,10 @@ variable "generate_avif" {
   default = false
 }
 
+variable "cors_allowed_origins" {
+  type = string
+}
+
 variable "min_cpu" {
   description = "Requested cpu. Set to 0 to remove constraint"
   type        = number

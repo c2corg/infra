@@ -25,6 +25,7 @@ module "images" {
     EXO_ACCESS_KEY_ID = var.exoscale_api_key
     EXO_SECRET_KEY    = var.exoscale_api_secret
   }
+  cors_allowed_origins = "*"
 
   # exoscale doesn't support object lifecycle management,
   # the clean script will remove expired images from the

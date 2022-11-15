@@ -129,3 +129,8 @@ variable "mail_password" {
   type      = string
   sensitive = true
 }
+
+variable "recaptcha_secret_key" {
+  type      = string
+  sensitive = true
+}

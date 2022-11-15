@@ -129,6 +129,7 @@ resource "kubernetes_config_map" "c2c-images-config-map" {
     AUTO_ORIENT_ORIGINAL       = var.auto_orient_original ? "1" : "0"
     GENERATE_WEBP              = var.generate_webp ? "1" : "0"
     GENERATE_AVIF              = var.generate_avif ? "1" : "0"
+    ALLOWED_ORIGINS            = var.cors_allowed_origins
     DISABLE_PROMETHEUS_METRICS = var.enable_metrics ? "0" : "1"
   }
 }
