@@ -115,7 +115,6 @@ resource "kubernetes_config_map" "c2c-images-config-map" {
   data = {
     DEBUG                      = "c2c_images:*"
     NODE_ENV                   = var.environment
-    VERSION                    = var.image_tag
     METRICS_PORT               = 8081
     SERVICE_PORT               = 8080
     TEMP_FOLDER                = var.temp_folder
