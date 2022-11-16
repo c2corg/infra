@@ -97,8 +97,9 @@ variable "db_user" {
 }
 
 variable "db_password" {
-  default = "postgres"
-  type    = string
+  default   = "postgres"
+  type      = string
+  sensitive = true
 }
 
 variable "jwt_secret_key" {
@@ -149,7 +150,7 @@ variable "suunto_webhook_subscription_token" {
 }
 
 variable "suunto_redirect_uri" {
-  default = "external-services/suunto/exchange-token"
+  default = "trackers/suunto/exchange-token"
   type    = string
 }
 
@@ -163,7 +164,8 @@ variable "garmin_consumer_secret" {
 }
 
 variable "decathlon_client_secret" {
-  type = string
+  type      = string
+  sensitive = true
 }
 
 variable "decathlon_api_key" {
