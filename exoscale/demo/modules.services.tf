@@ -77,4 +77,6 @@ module "tracking" {
   garmin_consumer_secret                   = var.garmin_consumer_secret
   decathlon_client_secret                  = var.decathlon_client_secret
   decathlon_api_key                        = var.decathlon_api_key
+  polar_client_id                          = "5a9f9ddd-fc15-48d2-bc56-86b43d491cc9"
+  polar_client_secret                      = var.polar_client_secret
 }

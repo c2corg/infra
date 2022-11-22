@@ -119,6 +119,7 @@ resource "kubernetes_config_map" "c2c-tracking-config-map" {
     SUUNTO_CLIENT_ID    = var.suunto_client_id
     SUUNTO_REDIRECT_URI = var.suunto_redirect_uri
     GARMIN_CONSUMER_KEY = var.garmin_consumer_key
+    POLAR_CLIENT_ID     = var.polar_client_id
   }
 }
 
@@ -139,5 +140,6 @@ resource "kubernetes_secret" "c2c-tracking-secrets" {
     GARMIN_CONSUMER_SECRET                   = var.garmin_consumer_secret
     DECATHLON_CLIENT_SECRET                  = var.decathlon_client_secret
     DECATHLON_API_KEY                        = var.decathlon_api_key
+    POLAR_CLIENT_SECRET                      = var.polar_client_secret
   }
 }

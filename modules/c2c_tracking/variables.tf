@@ -173,6 +173,15 @@ variable "decathlon_api_key" {
   sensitive = true
 }
 
+variable "polar_client_id" {
+  type = string
+}
+
+variable "polar_client_secret" {
+  type      = string
+  sensitive = true
+}
+
 variable "enable_metrics" {
   default = false
   type    = bool
