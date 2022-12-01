@@ -64,6 +64,7 @@ module "tracking" {
   db_user                                  = local.tracking_db_user
   db_password                              = local.tracking_db_pwd
   db_crypto                                = var.db_crypto
+  keyv_connection_uri                      = "redis://${module.redis.host}:${module.redis.port}/"
   jwt_secret_key                           = var.jwt_secret_key
   frontend_base_url                        = "https://${local.ui_host}/"
   strava_client_id                         = "63968"

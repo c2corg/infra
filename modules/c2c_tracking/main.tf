@@ -114,6 +114,7 @@ resource "kubernetes_config_map" "c2c-tracking-config-map" {
     DB_NAME             = var.db_name
     DB_PORT             = var.db_port
     DB_USER             = var.db_user
+    KEYV_CONNECTION_URI = var.keyv_connection_uri
     FRONTEND_BASE_URL   = var.frontend_base_url
     STRAVA_CLIENT_ID    = var.strava_client_id
     SUUNTO_CLIENT_ID    = var.suunto_client_id
