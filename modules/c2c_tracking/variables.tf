@@ -112,6 +112,10 @@ variable "db_crypto" {
   sensitive = true
 }
 
+variable "keyv_connection_uri" {
+  type = string
+}
+
 variable "frontend_base_url" {
   type = string
 }
