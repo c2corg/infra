@@ -1,5 +1,5 @@
 apiVersion: v2
 name: c2c-tracking
-description: A Helm chart for deploying c2c_images in Kubernetes
+description: A Helm chart for deploying c2c_tracking in Kubernetes
 type: application
 version: 0.1.0
