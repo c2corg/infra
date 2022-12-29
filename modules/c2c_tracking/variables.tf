@@ -102,6 +102,11 @@ variable "db_password" {
   sensitive = true
 }
 
+variable "db_enable_ssl" {
+  type    = bool
+  default = false
+}
+
 variable "jwt_secret_key" {
   type      = string
   sensitive = true
@@ -120,6 +125,11 @@ variable "frontend_base_url" {
   type = string
 }
 
+variable "strava_enabled" {
+  type    = bool
+  default = true
+}
+
 variable "strava_client_id" {
   type = string
 }
@@ -132,6 +142,11 @@ variable "strava_client_secret" {
 variable "strava_webhook_subscription_verify_token" {
   type      = string
   sensitive = true
+}
+
+variable "suunto_enabled" {
+  type    = bool
+  default = true
 }
 
 variable "suunto_client_id" {
@@ -158,6 +173,11 @@ variable "suunto_redirect_uri" {
   type    = string
 }
 
+variable "garmin_enabled" {
+  type    = bool
+  default = true
+}
+
 variable "garmin_consumer_key" {
   type = string
 }
@@ -165,6 +185,11 @@ variable "garmin_consumer_key" {
 variable "garmin_consumer_secret" {
   type      = string
   sensitive = true
+}
+
+variable "decathlon_enabled" {
+  type    = bool
+  default = true
 }
 
 variable "decathlon_client_secret" {
@@ -175,6 +200,11 @@ variable "decathlon_client_secret" {
 variable "decathlon_api_key" {
   type      = string
   sensitive = true
+}
+
+variable "polar_enabled" {
+  type    = bool
+  default = true
 }
 
 variable "polar_client_id" {

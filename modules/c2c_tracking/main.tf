@@ -113,13 +113,19 @@ resource "kubernetes_config_map" "c2c-tracking-config-map" {
     DB_HOST             = var.db_host
     DB_NAME             = var.db_name
     DB_PORT             = var.db_port
+    DB_ENABLE_SSL       = var.db_enable_ssl
     DB_USER             = var.db_user
     KEYV_CONNECTION_URI = var.keyv_connection_uri
     FRONTEND_BASE_URL   = var.frontend_base_url
+    STRAVA_ENABLED      = var.strava_enabled
     STRAVA_CLIENT_ID    = var.strava_client_id
+    SUUNTO_ENABLED      = var.suunto_enabled
     SUUNTO_CLIENT_ID    = var.suunto_client_id
     SUUNTO_REDIRECT_URI = var.suunto_redirect_uri
+    GARMIN_ENABLED      = var.garmin_enabled
     GARMIN_CONSUMER_KEY = var.garmin_consumer_key
+    DECATHLON_ENABLED   = var.decathlon_enabled
+    POLAR_ENABLED       = var.polar_enabled
     POLAR_CLIENT_ID     = var.polar_client_id
   }
 }
