@@ -1,6 +1,6 @@
 # services
 c2c_images_version                       = "v1.6.3"
-c2c_ui_version                           = "pwa3"
+c2c_ui_version                           = "v7.15.1"
 c2c_tracking_version                     = "v2.0.0"
 v6_api_version                           = "v6.14.1"
 
