@@ -69,7 +69,7 @@ module "tracking" {
   jwt_secret_key                           = var.jwt_secret_key
   frontend_base_url                        = "https://${local.ui_host}/"
   strava_enabled                           = false
-  strava_client_id                         = "63968"
+  strava_client_id                         = "99246"
   strava_client_secret                     = var.strava_client_secret
   strava_webhook_subscription_verify_token = var.strava_webhook_subscription_verify_token
   suunto_enabled                           = false
