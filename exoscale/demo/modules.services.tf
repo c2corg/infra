@@ -68,11 +68,11 @@ module "tracking" {
   keyv_connection_uri                      = "redis://${module.redis.host}:${module.redis.port}/"
   jwt_secret_key                           = var.jwt_secret_key
   frontend_base_url                        = "https://${local.ui_host}/"
-  strava_enabled                           = false
+  strava_enabled                           = true
   strava_client_id                         = "99246"
   strava_client_secret                     = var.strava_client_secret
   strava_webhook_subscription_verify_token = var.strava_webhook_subscription_verify_token
-  suunto_enabled                           = false
+  suunto_enabled                           = true
   suunto_client_id                         = "2928e564-85eb-4aef-92fb-2a0259589c9c"
   suunto_client_secret                     = var.suunto_client_secret
   suunto_subscription_key                  = var.suunto_subscription_key
