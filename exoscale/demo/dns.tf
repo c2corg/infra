@@ -15,5 +15,5 @@ locals {
   tracking_host     = "tracking.${local.domain}"
   discourse_host    = "forum.${local.domain}"
   grafana           = "grafana.${local.domain}"
-  exoscale_sos_host = "sos.exo.io"
+  exoscale_sos_host = "sos-ch-dk-2.exo.io"
 }

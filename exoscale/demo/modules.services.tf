@@ -86,4 +86,11 @@ module "tracking" {
   polar_enabled                            = true
   polar_client_id                          = "65d10592-5abf-41d6-a5ce-b16a28174849"
   polar_client_secret                      = var.polar_client_secret
+  mapbox_token                             = var.mapbox_token
+  storage_backend                          = "s3"
+  s3_endpoint                              = "https://${local.exoscale_sos_host}/"
+  s3_region                                = var.default_zone
+  s3_bucket                                = aws_s3_bucket.tracking.bucket
+  s3_access_key                            = var.exoscale_api_key
+  s3_secret_key                            = var.exoscale_api_secret
 }
