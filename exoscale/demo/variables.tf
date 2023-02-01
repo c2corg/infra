@@ -130,6 +130,11 @@ variable "polar_client_secret" {
   sensitive = true
 }
 
+variable "mapbox_token" {
+  type      = string
+  sensitive = true
+}
+
 variable "mail_password" {
   type      = string
   sensitive = true
