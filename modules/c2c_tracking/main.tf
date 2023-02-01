@@ -127,6 +127,10 @@ resource "kubernetes_config_map" "c2c-tracking-config-map" {
     DECATHLON_ENABLED   = var.decathlon_enabled
     POLAR_ENABLED       = var.polar_enabled
     POLAR_CLIENT_ID     = var.polar_client_id
+    STORAGE_BACKEND     = var.storage_backend
+    S3_ENDPOINT         = var.s3_endpoint
+    S3_REGION           = var.s3_region
+    S3_BUCKET           = var.s3_bucket
   }
 }
 
@@ -148,5 +152,8 @@ resource "kubernetes_secret" "c2c-tracking-secrets" {
     DECATHLON_CLIENT_SECRET                  = var.decathlon_client_secret
     DECATHLON_API_KEY                        = var.decathlon_api_key
     POLAR_CLIENT_SECRET                      = var.polar_client_secret
+    MAPBOX_TOKEN                             = var.mapbox_token
+    S3_ACCESS_KEY_ID                         = var.s3_access_key
+    S3_SECRET_KEY                            = var.s3_secret_key
   }
 }
