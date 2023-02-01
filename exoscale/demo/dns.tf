@@ -15,5 +15,5 @@ locals {
   tracking_host     = "tracking.${local.domain}"
   discourse_host    = "forum.${local.domain}"
   grafana           = "grafana.${local.domain}"
-  exoscale_sos_host = "sos-ch-dk-2.exo.io"
+  exoscale_sos_host = "sos-${var.default_zone}.exo.io" # this is not properly exposed by exoscale / aws_s3_bucket
 }

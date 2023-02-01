@@ -21,9 +21,10 @@ module "images" {
   generate_avif        = true
   auto_orient_original = true
   prefixed_map = {
-    EXO_ENDPOINT      = "https://${local.exoscale_sos_host}"
-    EXO_ACCESS_KEY_ID = var.exoscale_api_key
-    EXO_SECRET_KEY    = var.exoscale_api_secret
+    EXO_ENDPOINT       = "https://${local.exoscale_sos_host}"
+    EXO_ACCESS_KEY_ID  = var.exoscale_api_key
+    EXO_SECRET_KEY     = var.exoscale_api_secret
+    EXO_DEFAULT_REGION = var.default_zone
   }
   cors_allowed_origins = "*"
 
