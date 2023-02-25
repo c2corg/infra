@@ -87,6 +87,12 @@ module "tracking" {
   polar_enabled                            = true
   polar_client_id                          = "65d10592-5abf-41d6-a5ce-b16a28174849"
   polar_client_secret                      = var.polar_client_secret
+  coros_enabled                            = true
+  coros_base_url                            = "https://opentest.coros.com/"
+  coros_client_id                          = "f263ed9257c74e808befaf548a27852c"
+  coros_client_secret                      = var.coros_client_secret
+  coros_webhook_client_id                  = var.coros_webhook_client_id
+  coros_webhook_secret                     = var.coros_webhook_secret
   mapbox_token                             = var.mapbox_token
   storage_backend                          = "s3"
   s3_endpoint                              = "https://${local.exoscale_sos_host}/"

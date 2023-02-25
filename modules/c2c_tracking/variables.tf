@@ -216,6 +216,34 @@ variable "polar_client_secret" {
   sensitive = true
 }
 
+variable "coros_enabled" {
+  type    = bool
+  default = true
+}
+
+variable "coros_base_url" {
+  type = string
+}
+
+variable "coros_client_id" {
+  type = string
+}
+
+variable "coros_client_secret" {
+  type      = string
+  sensitive = true
+}
+
+variable "coros_webhook_client_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "coros_webhook_secret" {
+  type      = string
+  sensitive = true
+}
+
 variable "mapbox_token" {
   type      = string
   sensitive = true
