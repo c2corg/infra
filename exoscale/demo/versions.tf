@@ -1,21 +1,27 @@
 terraform {
+  cloud {
+    organization = "camptocamp-org"
+    workspaces {
+      tags = ["demo"]
+    }
+  }
   required_providers {
     exoscale = {
-      version = ">= 0.40.1"
+      version = "= 0.46.0"
       source  = "exoscale/exoscale"
     }
     aws = {
-      version = ">= 4.29.0"
+      version = "= 4.57.1"
       source  = "hashicorp/aws"
     }
     helm = {
-      version = ">= 2.6.0"
+      version = "= 2.9.0"
       source  = "hashicorp/helm"
     }
     kubernetes = {
-      version = ">= 2.13.1"
+      version = "= 2.18.1"
       source  = "hashicorp/kubernetes"
     }
   }
-  required_version = ">= 1.0"
+  required_version = ">= 1.3.1"
 }
