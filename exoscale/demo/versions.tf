@@ -1,10 +1,4 @@
 terraform {
-  cloud {
-    organization = "camptocamp-org"
-    workspaces {
-      tags = ["demo"]
-    }
-  }
   required_providers {
     exoscale = {
       version = "= 0.46.0"
