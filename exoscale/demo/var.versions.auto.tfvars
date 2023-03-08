@@ -1,6 +1,6 @@
 # services
-c2c_ui_version                           = "coros-1"
-c2c_tracking_version                     = "coros-1"
+c2c_ui_version                           = "v7.20.0"
+c2c_tracking_version                     = "v2.4.0"
 v6_api_version                           = "v6.14.1"
 c2c_images_version                       = "v1.7.2"
 

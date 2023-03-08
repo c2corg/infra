@@ -91,8 +91,6 @@ module "tracking" {
   coros_base_url                           = "https://opentest.coros.com/"
   coros_client_id                          = "f263ed9257c74e808befaf548a27852c"
   coros_client_secret                      = var.coros_client_secret
-  coros_webhook_client_id                  = var.coros_webhook_client_id
-  coros_webhook_secret                     = var.coros_webhook_secret
   mapbox_token                             = var.mapbox_token
   storage_backend                          = "s3"
   s3_endpoint                              = "https://${local.exoscale_sos_host}/"

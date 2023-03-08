@@ -131,8 +131,6 @@ resource "kubernetes_config_map" "c2c-tracking-config-map" {
     COROS_SERVER            = var.coros_base_url
     COROS_CLIENT_ID         = var.coros_client_id
     COROS_CLIENT_SECRET     = var.coros_client_secret
-    COROS_WEBHOOK_CLIENT_ID = var.coros_webhook_client_id
-    COROS_WEBHOOK_SECRET    = var.coros_webhook_secret
     STORAGE_BACKEND         = var.storage_backend
     S3_ENDPOINT             = var.s3_endpoint
     S3_REGION               = var.s3_region
