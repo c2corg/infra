@@ -12,5 +12,5 @@ elasticsearch_version                    = "2.4.6-alpine"
 # infra
 kube_prometheus_stack_chart_version      = "40.3.1"
 cert_manager_chart_version               = "v1.11.0"
-haproxy_kubernetes_ingress_chart_version = "1.23.1"
+haproxy_kubernetes_ingress_chart_version = "1.29.0"
 longhorn_chart_version                   = "1.3.1"
