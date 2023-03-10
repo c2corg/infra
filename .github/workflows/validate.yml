@@ -1,0 +1,27 @@
+on: [pull_request]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: Validate terraform
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: terraform validate demo
+        if: ${{ always() }}
+        uses: dflook/terraform-validate@v1
+        id: validate-demo
+        with:
+          path: exoscale/demo
+
+      - name: terraform validate production
+        if: ${{ always() }}
+        uses: dflook/terraform-validate@v1
+        id: validate-production
+        with:
+          path: exoscale/deproductionmo
+
+      - name: Validate production failed
+        if: ${{ failure() && steps.validate-production.outputs.failure-reason == 'validate-failed' }}
+        run: echo "terraform validate for production failed"
