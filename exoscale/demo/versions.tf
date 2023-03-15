@@ -5,7 +5,7 @@ terraform {
       source  = "exoscale/exoscale"
     }
     aws = {
-      version = "= 4.57.1"
+      version = "= 4.58.0"
       source  = "hashicorp/aws"
     }
     helm = {
