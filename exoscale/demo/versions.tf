@@ -1,20 +1,20 @@
 terraform {
   required_providers {
     exoscale = {
-      version = "0.50.0"
       source  = "exoscale/exoscale"
+      version = "0.50.0"
     }
     aws = {
-      version = "= 4.59.0"
       source  = "hashicorp/aws"
+      version = "= 4.59.0"
     }
     helm = {
-      version = "= 2.9.0"
       source  = "hashicorp/helm"
+      version = "= 2.9.0"
     }
     kubernetes = {
-      version = "= 2.18.1"
       source  = "hashicorp/kubernetes"
+      version = "= 2.18.1"
     }
   }
   required_version = ">= 1.3.1"
