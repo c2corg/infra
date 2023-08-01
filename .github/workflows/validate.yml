@@ -22,6 +22,10 @@ jobs:
         with:
           path: exoscale/production
 
+      - name: Validate demo failed
+        if: ${{ failure() && steps.validate-demo.outputs.failure-reason == 'validate-failed' }}
+        run: echo "terraform validate for demo failed"
+
       - name: Validate production failed
         if: ${{ failure() && steps.validate-production.outputs.failure-reason == 'validate-failed' }}
         run: echo "terraform validate for production failed"
