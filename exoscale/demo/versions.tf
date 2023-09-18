@@ -2,7 +2,7 @@ terraform {
   required_providers {
     exoscale = {
       source  = "exoscale/exoscale"
-      version = "0.52.0"
+      version = "0.52.1"
     }
     aws = {
       source  = "hashicorp/aws"
