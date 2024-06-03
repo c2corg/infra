@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     exoscale = {
-      version = "0.57.0"
+      version = "0.59.1"
       source  = "exoscale/exoscale"
     }
   }
